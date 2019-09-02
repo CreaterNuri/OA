@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.1//EN" "http://struts.apache.org/dtds/struts-2.1.dtd">
+<struts>
+	<constant name="struts.objectFactory" value="org.apache.struts2.spring.StrutsSpringObjectFactory" />
+	<constant name="struts.devMode" value="false" /> 
+	<constant name="struts.action.extension" value="action"/>
+	<!-- 上传文件总大小限制 -->
+	<constant name="struts.multipart.maxSize" value="1000000000" />
+	<!-- 用户管理 -->
+    <include file="struts-user.xml"></include>
+    <!-- 公告管理 -->
+    <include file="struts-notice.xml"></include>
+    <!-- 通讯录管理 -->
+    <include file="struts-addresslist.xml"></include>
+	<!-- 文件共享 -->
+	<include file="struts-sharefile.xml"></include>
+	<!-- 文件下载 -->
+	<include file="struts-downfile.xml"></include>
+	<!-- 报销单管理 -->
+	<include file="struts-account.xml"></include>
+	<!-- 考勤管理 -->
+	<include file="struts-attendence.xml"></include>
+	<!-- 加班管理 -->
+	<include file="struts-overtime.xml"></include>
+	<!-- 请假管理 -->
+	<include file="struts-leavetime.xml"></include>
+	<!-- 请假类型管理 -->
+	<include file="struts-leavetype.xml"></include>
+	<!-- 用户信息处理 -->
+	<include file="struts-usermessage.xml"></include>
+	<!-- 管理员管理 -->
+	<include file="struts-admin.xml"></include>
+	<!-- 管理员管理-用户联系方式 -->
+	<include file="struts-adminaddress.xml"></include>
+</struts>    

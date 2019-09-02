@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+  <!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.1.7//EN"
+    "http://struts.apache.org/dtds/struts-2.1.7.dtd">
+	
+<struts>
+	<!--解决乱码    -->
+	<constant name="struts.i18n.encoding" value="UTF-8"></constant> 
+	<package name="oanotice" extends="struts-default,json-default">
+		<!-- 公告查询 -->
+		<action name="notice_query!*" class="noticeAction" method="queryAll">
+			<result name="list" type="json"></result>
+		</action>
+		<!-- 公告添加 -->
+		<action name="notice_add!*" class="noticeAction" method="addNotice">
+			<result name="add" type="json"></result>
+		</action>
+		<!-- 公告删除 -->
+		<action name="notice_del!*" class="noticeAction" method="delNotice">
+			<result name="del" type="json"></result>
+		</action>
+		<!-- 公告更新 -->
+		<action name="notice_upd!*" class="noticeAction" method="updateNotice">
+			<result name="update" type="json"></result>
+		</action>
+	</package>
+</struts>
+	

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+   <!-- 配置表与实体对象的关系 -->
+   <!-- 报销类型 -->
+<hibernate-mapping>
+	<class name="com.sdut.oa.entity.Attendance" table="attendance">         
+        <id name="id" column="id" type="int">
+			<generator class="identity" />
+		</id>
+  		<!-- 用户名 -->
+        <property name="uid" column="uid"></property>
+    	<!-- 应出勤天数 -->
+    	<property name="dutydays" column="dutydays"></property>
+    	<!-- 请假天数 -->
+    	<property name="requestdays" column="requestdays"></property>
+    	<!-- 加班天数 -->
+        <property name="overtimedays" column="overtimedays"></property>
+        <!-- 实际出勤天数 -->
+    	<property name="actualdays" column="actualdays"></property>
+    	<!-- 当前年份 -->
+    	<property name="year" column="year"></property>
+    	<!-- 当前月份 -->
+    	<property name="month" column="month"></property>
+    	<!-- 角色职位 -->
+    	<property name="power" column="power"></property>
+    </class>
+</hibernate-mapping>

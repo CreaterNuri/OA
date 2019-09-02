@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+   <!-- 配置表与实体对象的关系 -->
+   <!-- 报销类型 -->
+<hibernate-mapping>
+	<class name="com.sdut.oa.entity.Account" table="account">         
+        <id name="id" column="id" type="int">
+			<generator class="identity" />
+		</id>
+  
+        <property name="date" column="date"></property>
+    	
+    	<property name="accounttype" column="accounttype"></property>
+    	
+    	<property name="money" column="money"></property>
+    	<!-- 提交人 -->
+        <property name="reimbursement" column="reimbursement"></property>
+        
+    	<property name="state" column="state"></property>
+    	<!-- 审批人 -->
+    	<property name="approver" column="approver"></property>
+    </class>
+</hibernate-mapping>

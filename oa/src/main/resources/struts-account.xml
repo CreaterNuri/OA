@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+  <!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.1.7//EN"
+    "http://struts.apache.org/dtds/struts-2.1.7.dtd">
+	
+<struts>
+	<!--解决乱码    -->
+	<constant name="struts.i18n.encoding" value="UTF-8"></constant> 
+	<package name="oaaccount" extends="struts-default,json-default">
+		<!-- 报销单查询 -->
+		<action name="account_query!*" class="accountAction" method="queryAll">
+			<result name="list" type="json"></result>
+		</action>
+		<!-- 报销类型查询 -->
+		<action name="reimburses_querytype!*" class="accountAction" method="findAllType">
+			<result name="type" type="json"></result>
+		</action>
+		<!-- 报销单添加 -->
+		<action name="account_add!*" class="accountAction" method="addAccount">
+			<result name="add" type="json"></result>
+		</action>
+		<!-- 报销单管理 -->
+		<action name="account_manager!*" class="accountAction" method="managerAccount">
+			<result name="manager" type="json"></result>
+		</action>
+	</package>
+</struts>
+	

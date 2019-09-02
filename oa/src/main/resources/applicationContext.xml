@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:aop="http://www.springframework.org/schema/aop" xmlns:jee="http://www.springframework.org/schema/jee"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="
+   http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+   http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.0.xsd
+   http://www.springframework.org/schema/jee http://www.springframework.org/schema/jee/spring-jee-3.0.xsd
+   
+   http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.0.xsd
+   http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.0.xsd">
+
+	<!-- http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.0.xsd -->
+	
+	<!-- 配置要扫描的包 -->
+	<context:component-scan base-package="com.sdut.oa" />
+	<!-- 配置连接池: -->
+	<!-- 引入外部属性文件 -->
+	<context:property-placeholder location="classpath:jdbc.properties"/>
+	<!-- 配置C3P0连接池: -->
+	<bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">
+		<property name="driverClass" value="${jdbc.driver}"/>
+		<property name="jdbcUrl" value="${jdbc.url}"/>
+		<property name="user" value="${jdbc.user}"/>
+		<property name="password" value="${jdbc.password}"/>
+		<!-- 指定连接池中保留的最大连接数. Default:15-->  
+        <property name="maxPoolSize" value="${jdbc.maxPoolSize}"/>  
+        <!-- 指定连接池中保留的最小连接数-->  
+        <property name="minPoolSize" value="${jdbc.minPoolSize}"/>  
+        <!-- 指定连接池的初始化连接数  取值应在minPoolSize 与 maxPoolSize 之间.Default:3-->  
+        <property name="initialPoolSize" value="${jdbc.initialPoolSize}"/>  
+        <!-- 最大空闲时间,60秒内未使用则连接被丢弃。若为0则永不丢弃。 Default:0-->  
+        <property name="maxIdleTime" value="${jdbc.maxIdleTime}"/>  
+        <!-- 当连接池中的连接耗尽的时候c3p0一次同时获取的连接数. Default:3-->  
+        <property name="acquireIncrement" value="${jdbc.acquireIncrement}"/>  
+        <property name="maxStatements" value="${jdbc.maxStatements}"/>  
+        <!--每60秒检查所有连接池中的空闲连接。默认值: 0，不检查 -->
+        <property name="idleConnectionTestPeriod" value="${jdbc.idleConnectionTestPeriod}"/>
+	</bean>
+	
+	<!-- Hibernate的相关信息 -->
+	<bean id="sessionFactory" class="org.springframework.orm.hibernate3.LocalSessionFactoryBean">
+		<!-- 注入连接池 -->
+		<property name="dataSource" ref="dataSource"/>
+		<!-- 配置Hibernate的其他的属性 -->
+		<property name="hibernateProperties">
+			<props>
+				<prop key="hibernate.dialect">org.hibernate.dialect.MySQLDialect</prop>
+				<prop key="hibernate.show_sql">true</prop>
+				<prop key="hibernate.format_sql">true</prop>
+				<prop key="hibernate.connection.autocommit">false</prop>
+				<prop key="hibernate.hbm2ddl.auto">update</prop>
+			</props>
+		</property>
+		<!-- 配置Hibernate的映射文件 -->
+		 <property name="mappingResources">
+			<list>
+				<value>com/sdut/oa/entity/user.hbm.xml</value>
+				<value>com/sdut/oa/entity/admin.hbm.xml</value>
+				<value>com/sdut/oa/entity/sharedfile.hbm.xml</value>
+				<value>com/sdut/oa/entity/notice.hbm.xml</value>
+				<value>com/sdut/oa/entity/account.hbm.xml</value>
+				<value>com/sdut/oa/entity/reimburses.hbm.xml</value>
+				<value>com/sdut/oa/entity/attendance.hbm.xml</value>
+				<value>com/sdut/oa/entity/overtime.hbm.xml</value>
+				<value>com/sdut/oa/entity/leavetime.hbm.xml</value>
+				<value>com/sdut/oa/entity/leavetype.hbm.xml</value>
+				<value>com/sdut/oa/entity/usermessage.hbm.xml</value>
+				<value>com/sdut/oa/entity/power.hbm.xml</value>
+				<value>com/sdut/oa/entity/addresslist.hbm.xml</value>
+			</list>
+		</property> 
+	</bean>
+	<!-- 注入sessionFactory -->
+	<!-- 用户管理 -->
+    <bean id="userDaoImpl" class="com.sdut.oa.dao.impl.UserDaoImpl">  
+        <property name="sessionFactory" ref="sessionFactory"></property>  
+    </bean>
+	<!-- 公告管理 -->
+	<bean id="noticeDaoImpl" class="com.sdut.oa.dao.impl.NoticeDaoImpl">  
+        <property name="sessionFactory" ref="sessionFactory"></property>  
+    </bean>
+    <!-- 通讯录管理 -->
+    <bean id="addresslistDaoImpl" class="com.sdut.oa.dao.impl.AddresslistDaoImpl">  
+        <property name="sessionFactory" ref="sessionFactory"></property>  
+    </bean>
+    <!-- 文件管理 -->
+    <bean id="sharedfileDaoImpl" class="com.sdut.oa.dao.impl.SharedfileDaoImpl">  
+        <property name="sessionFactory" ref="sessionFactory"></property>  
+    </bean>
+	<!-- 报销单管理 -->	    
+	<bean id="accountDaoImpl" class="com.sdut.oa.dao.impl.AccountDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	<!-- 报销类型管理 -->	    
+	<bean id="reimbursesDaoImpl" class="com.sdut.oa.dao.impl.ReimbursesDaoImpl">  
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>  
+	<!-- 加班管理 -->
+	<bean id="overtimeDaoImpl" class="com.sdut.oa.dao.impl.OvertimeDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	<!-- 请假管理 -->
+	<bean id="leavetimeDaoImpl" class="com.sdut.oa.dao.impl.LeavetimeDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	<!-- 请假类型管理 -->
+	<bean id="leavetypeDaoImpl" class="com.sdut.oa.dao.impl.LeavetypeDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	<!-- 考勤管理 -->
+	<bean id="attendanceDaoImpl" class="com.sdut.oa.dao.impl.AttendanceDaoImpl" >
+    	<property name="sessionFactory" ref="sessionFactory"></property>
+    </bean>
+    <!-- 用户信息管理 -->
+    <bean id="usermessageDaoImpl" class="com.sdut.oa.dao.impl.UsermessageDaoImpl">
+    	<property name="sessionFactory" ref="sessionFactory"></property>
+    </bean>
+   <!-- 管理员管理 -->
+    <bean id="adminDaoImpl" class="com.sdut.oa.dao.impl.AdminDaoImpl">
+    	<property name="sessionFactory" ref="sessionFactory"></property>
+    </bean>
+    <!-- 角色管理 -->
+    <bean id="powerDaoImpl" class="com.sdut.oa.dao.impl.PowerDaoImpl">
+    	<property name="sessionFactory" ref="sessionFactory"></property>
+    </bean>
+	<!-- 事务管理: -->
+	<!-- 事务管理器 -->
+	<bean id="transactionManager" class="org.springframework.orm.hibernate3.HibernateTransactionManager">
+		<property name="sessionFactory" ref="sessionFactory"/>
+	</bean>
+	
+	<!-- 开启注解事务 -->
+	<tx:annotation-driven transaction-manager="transactionManager"/>
+	
+</beans>

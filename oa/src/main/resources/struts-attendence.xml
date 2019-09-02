@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+  <!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.1.7//EN"
+    "http://struts.apache.org/dtds/struts-2.1.7.dtd">
+	
+<struts>
+	<!--解决乱码    -->
+	<constant name="struts.i18n.encoding" value="UTF-8"></constant> 
+	<package name="oaattendence" extends="struts-default,json-default">
+		<!-- 考勤查询 -->
+		<action name="attendence_query!*" class="attendanceAction" method="queryAttendence">
+			<result name="query" type="json"></result>
+		</action>
+	</package>
+</struts>
+	

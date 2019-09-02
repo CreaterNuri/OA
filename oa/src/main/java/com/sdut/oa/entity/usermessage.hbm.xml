@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+   <!-- 配置表与实体对象的关系 -->
+   <!-- 报销类型 -->
+<hibernate-mapping>
+	<class name="com.sdut.oa.entity.Usermessage" table="Usermessage">         
+        <id name="id" column="id" type="int">
+			<generator class="identity" />
+		</id>
+  		
+        <property name="message" column="message"></property>
+    	
+    	<property name="applicant" column="applicant"></property>
+    	
+    	<property name="approver" column="approver"></property>
+        
+    	<property name="state" column="state"></property>
+    	
+    	<property name="time" column="time"></property>
+    	
+    	<property name="note" column="note"></property>
+    	
+    	<property name="aid" column="aid"></property>
+    	
+    	<property name="lid" column="lid"></property>
+    	
+    	<property name="oid" column="oid"></property>
+    </class>
+</hibernate-mapping>

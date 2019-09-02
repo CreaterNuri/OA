@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+ <!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.1.7//EN"
+    "http://struts.apache.org/dtds/struts-2.1.7.dtd">
+	
+<struts>
+	<!--解决乱码    -->
+	<constant name="struts.i18n.encoding" value="UTF-8"></constant> 
+	<package name="oadownloadfile" extends="struts-default,json-default">
+		<!-- 文件下载 -->
+		<action name="downloadFileAction_down!*" class="downloadFileAction" method="downloadfile">
+			<result name="success" type="stream">
+			<param name="inputName">attrInputStream</param> 
+			<param name="contentDisposition">attachment;filename="${downFileName}"</param> 
+			<param name="bufferSize">2048</param><!-- 输出时缓冲区的大小 -->  
+		</result>
+		</action>
+	</package>
+</struts>

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+  <!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.1.7//EN"
+    "http://struts.apache.org/dtds/struts-2.1.7.dtd">
+	
+<struts>
+	<!--解决乱码    -->
+	<constant name="struts.i18n.encoding" value="UTF-8"></constant> 
+	<package name="oaaddresslist" extends="struts-default,json-default">
+		<!-- 根据姓名查询 -->
+		<action name="addresslist_findbyname!*" class="addresslistAction" method="findByName">
+			<result name="name" type="json"></result>
+		</action>
+		<!-- 根据id查询 -->
+		<action name="addresslist_findbyid!*" class="addresslistAction" method="findById">
+			<result name="id" type="json"></result>
+		</action>
+	</package>
+</struts>
+	

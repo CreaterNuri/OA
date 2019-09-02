@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.1.7//EN"
+    "http://struts.apache.org/dtds/struts-2.1.7.dtd">
+	
+<struts>
+	<!--解决乱码    -->
+	<constant name="struts.i18n.encoding" value="UTF-8"></constant> 
+	<package name="oaovertime" extends="struts-default,json-default">
+		<!-- 加班查询 -->
+		<action name="overtimet_query!*" class="overtimeAction" method="queryAll">
+			<result name="list" type="json"></result>
+		</action>
+		<!-- 加班添加 -->
+		<action name="overtimet_add!*" class="overtimeAction" method="addOvertime">
+			<result name="add" type="json"></result>
+		</action>
+	</package>
+</struts>
+	

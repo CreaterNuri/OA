@@ -1,0 +1,28 @@
+.upfile {
+    display: block;
+    margin-top: -29px;
+    margin-left: 490px;
+    width: 94px;
+    height: 30px;
+    color: #fff;
+    background: #3eafe0;
+    font-weight: bold;
+    border-radius: 2px;
+    text-align: center;
+    line-height: 30px;
+    cursor: pointer;
+}
+.downloadfile{
+    display: block;
+    margin-top: -29px;
+    margin-left: 600px;
+    width: 94px;
+    height: 30px;
+    color: #fff;
+    background: #3eafe0;
+    font-weight: bold;
+    border-radius: 2px;
+    text-align: center;
+    line-height: 30px;
+    cursor: pointer;
+}

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.1.7//EN"
+    "http://struts.apache.org/dtds/struts-2.1.7.dtd">
+	
+<struts>
+	<!--解决乱码    -->
+	<constant name="struts.i18n.encoding" value="UTF-8"></constant> 
+	<package name="oauser" extends="struts-default,json-default">
+		<!-- 查询 -->
+		<action name="user_login!*" class="userAction" method="login">
+			<result name="login" type="json"></result>
+		</action>
+		<!-- 密码更新 -->
+		<action name="user_changePwd!*" class="userAction" method="updatePwd">
+			<result name="change" type="json"></result>
+		</action>
+		<!--根据id查询-->
+		<action name="user_queryPwd!*" class="userAction" method="queryPwd">
+			<result name="pwd" type="json"></result>
+		</action>
+	</package>
+</struts>
+	

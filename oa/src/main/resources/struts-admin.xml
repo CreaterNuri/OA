@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+  <!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.1.7//EN"
+    "http://struts.apache.org/dtds/struts-2.1.7.dtd">
+	
+<struts>
+	<!--解决乱码    -->
+	<constant name="struts.i18n.encoding" value="UTF-8"></constant> 
+	<package name="oaadmin" extends="struts-default,json-default">
+		<!-- 管理员登陆 -->
+		<action name="admin_login!*" class="adminAction" method="login">
+			<result name="login" type="json"></result>
+		</action>
+		<!-- 查询所有用户 -->
+		<action name="admin_query!*" class="adminAction" method="query">
+			<result name="list" type="json"></result>
+		</action>
+		<!-- 查询所有角色职位 -->
+		<action name="admin_queryPower!*" class="adminAction" method="queryPower">
+			<result name="power" type="json"></result>
+		</action>
+		<!-- 添加用户 -->
+		<action name="admin_addUser!*" class="adminAction" method="addUser">
+			<result name="adduser" type="json"></result>
+		</action>
+		<!-- 更新用户 -->
+		<action name="admin_updUser!*" class="adminAction" method="updUser">
+			<result name="upduser" type="json"></result>
+		</action>
+		<!-- 删除用户 -->
+		<action name="admin_delUser!*" class="adminAction" method="delUser">
+			<result name="deluser" type="json"></result>
+		</action>
+		<!-- 查询所有通讯录 -->
+		<action name="admin_queryAddress!*" class="adminAction" method="queryAddress">
+			<result name="address" type="json"></result>
+		</action>
+		<!-- 添加用户联系方式 -->
+		<action name="admin_addAddress!*" class="adminAction" method="addAddress">
+			<result name="addaddress" type="json"></result>
+		</action>
+		<!-- 更新用户联系方式 -->
+		<action name="admin_updAddress!*" class="adminAction" method="updAddress">
+			<result name="updaddress" type="json"></result>
+		</action>
+		<!-- 更新用户联系方式 -->
+		<action name="admin_delAddress!*" class="adminAction" method="delAddress">
+			<result name="deladdress" type="json"></result>
+		</action>
+	</package>
+</struts>
+	

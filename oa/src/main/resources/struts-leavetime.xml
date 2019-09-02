@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+ <!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.1.7//EN"
+    "http://struts.apache.org/dtds/struts-2.1.7.dtd">
+	
+<struts>
+	<!--解决乱码    -->
+	<constant name="struts.i18n.encoding" value="UTF-8"></constant> 
+	<package name="oaleavetime" extends="struts-default,json-default">
+		<!-- 请假单查询 -->
+		<action name="leavetime_query!*" class="leavetimeAction" method="queryAll">
+			<result name="list" type="json"></result>
+		</action>
+		<!-- 请假单添加 -->
+		<action name="leavetime_add!*" class="leavetimeAction" method="addleavetime">
+			<result name="add" type="json"></result>
+		</action>
+	</package>
+</struts>
+	

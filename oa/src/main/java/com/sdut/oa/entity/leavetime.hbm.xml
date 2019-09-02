@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+   <!-- 配置表与实体对象的关系 -->
+   <!-- 报销类型 -->
+<hibernate-mapping>
+	<class name="com.sdut.oa.entity.Leavetime" table="leavetime">         
+        <id name="id" column="id" type="int">
+			<generator class="identity" />
+		</id>
+  
+        <property name="uid" column="uid"></property>
+        
+        <property name="username" column="username"></property>
+    	
+    	<property name="type" column="type"></property>
+    	
+    	<property name="leavemsg" column="leavemsg"></property>
+
+        <property name="leavedays" column="leavedays"></property>
+        
+    	<property name="starttime" column="starttime"></property>
+    	
+    	<property name="endtime" column="endtime"></property>
+    	<!-- 审批人 -->
+    	<property name="approver" column="approver"></property>
+    	
+    	<property name="power" column="power"></property>
+    	
+    	<property name="state" column="state"></property>
+    </class>
+</hibernate-mapping>

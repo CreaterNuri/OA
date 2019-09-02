@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+ <!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.1.7//EN"
+    "http://struts.apache.org/dtds/struts-2.1.7.dtd">
+	
+<struts>
+	<!--解决乱码    -->
+	<constant name="struts.i18n.encoding" value="UTF-8"></constant> 
+	<package name="oausermessage" extends="struts-default,json-default">
+		<!-- 查询信息数量 -->
+		<action name="usermessage_query!*" class="usermessageAction" method="queryUserNum">
+			<result name="number" type="json"></result>
+		</action>
+		<!-- 查询所有消息 -->
+		<action name="usermessage_queryAll!*" class="usermessageAction" method="queryAll">
+			<result name="list" type="json"></result>
+		</action>
+		<!-- 处理信息 -->
+		<action name="usermessage_manager!*" class="usermessageAction" method="managerMsg">
+			<result name="manager" type="json"></result>
+		</action>
+	</package>
+</struts>
+	

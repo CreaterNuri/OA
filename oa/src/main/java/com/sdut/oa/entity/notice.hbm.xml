@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+   <!-- 配置表与实体对象的关系 -->
+<hibernate-mapping>
+	<class name="com.sdut.oa.entity.Notice" table="notice">         
+        <id name="id" column="id" type="int">
+			<generator class="identity" />
+		</id>
+  
+        <property name="noticemsg" column="noticemsg"></property>
+        
+        <property name="publisher" column="publisher"></property>
+         
+        <property name="releasetime" column="releasetime"></property>
+        
+        <property name="number" column="number"></property>
+		
+    </class>
+</hibernate-mapping>

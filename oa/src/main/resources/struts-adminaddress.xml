@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.1.7//EN"
+    "http://struts.apache.org/dtds/struts-2.1.7.dtd">
+<struts>
+	<!--解决乱码    -->
+	<constant name="struts.i18n.encoding" value="UTF-8"></constant> 
+	<package name="oaadminaddress" extends="struts-default,json-default">
+		<!-- 查询所有通讯录 -->
+		<action name="admin_queryAddress!*" class="adminAddresslistAction" method="queryAddress">
+			<result name="address" type="json"></result>
+		</action>
+		<!-- 添加用户联系方式 -->
+		<action name="admin_addAddress!*" class="adminAddresslistAction" method="addAddress">
+			<result name="addaddress" type="json"></result>
+		</action>
+		<!-- 更新用户联系方式 -->
+		<action name="admin_updAddress!*" class="adminAddresslistAction" method="updAddress">
+			<result name="updaddress" type="json"></result>
+		</action>
+		<!-- 删除用户联系方式 -->
+		<action name="admin_delAddress!*" class="adminAddresslistAction" method="delAddress">
+			<result name="deladdress" type="json"></result>
+		</action>
+	</package>
+</struts>
+	
